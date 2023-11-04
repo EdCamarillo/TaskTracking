@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.AddTaskContainer {
+    max-width: 600px;
+    width: 600px;
+    margin: 20px;
+    float: right;
+    background-color: #e7e7e7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-left: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none;
+    position: relative;
+    z-index: 2;
+}
+
+.ContainerLine {
+    background-color: #eecb67;
+    width: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+h2 {
+    margin: 30px;
+}
+
+form {
+    margin: 30px 0;
+    margin-left: 50px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #eecb67;
+    color: #1e1e1e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #eecf89;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+#AddTaskButton {
+    float: right;
+    background-color: #eecb67;
+    color: #1e1e1e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#AddTaskButton:hover {
+    background-color: #eecf89;
+}
+
+textarea {
+    resize: none;
+}
+
+.ProjectMenu {
+    background-color: #eecb67;
+    width: 300px;
+    height: 100%;
+    float: left;
+    position: absolute;
+}
+
+.UserMenu {
+    background-color: #ffbd59;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darken the background with an alpha value */
+    z-index: 1;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#CloseContainerButton {
+    background-color: #ee7b67;
+    color: #1e1e1e;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#CloseContainerButton:hover {
+    background-color: #ee8767;
+}
+
+.TaskMenu {
+    padding: 20px;
+    margin: 20px 20px 20px 320px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tasks-header {
+    display: flex;
+    align-items: center;
+}
+
+.tasks-header-text {
+    margin-right: 30px;
+}
+
+select {
+    background-color: #ffbd59;
+    appearance: none;
+    width: 80px;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+}
+
+select:hover {
+    cursor: pointer;
+    background-color: #eecf89;
+}
+
+

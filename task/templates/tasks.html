@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Tasks{% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/tasks.css?{% now 'U' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/tasks.css' %}"> -->
+</head>
+<body>
+    <main>
+        {% block content %}
+        <div class="ProjectMenu">
+            <div class="UserMenu">
+
+            </div>
+        </div>
+        <div class="TaskMenu">
+            <h1> Project Name </h1>
+            <div class="tasks-header">
+                <h3 class="tasks-header-text"> Tasks </h3>
+                <button id="AddTaskButton">Add a Task</button>
+            </div>
+        </div>
+
+
+        <div class="AddTaskContainer">
+            <div class="ContainerLine"></div>
+            <button id="CloseContainerButton">x</button>
+            <h2>Add a Task</h2>
+            <form action="{% url 'tasks'%}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="button" type="submit">Add</button>
+            </form>
+        </div>
+        <div id="overlay" class="hidden"></div>
+        {% endblock %}
+    </main>
+    <script>
+        const openTaskContainer = document.getElementById('AddTaskButton');
+        const toggleableDiv = document.querySelector('.AddTaskContainer');
+        const overlay = document.getElementById('overlay');
+        const closeTaskContainer = document.getElementById('CloseContainerButton');
+
+        toggleableDiv.style.display = 'none';
+
+        toggleAddTaskContainer(openTaskContainer);
+        toggleAddTaskContainer(closeTaskContainer);
+        function toggleAddTaskContainer(Button){
+            Button.addEventListener('click', () => {
+                if (toggleableDiv.style.display === 'none') {
+                    overlay.style.display = 'block';
+                    toggleableDiv.style.display = 'block'; // Show the div
+                } else {
+                    overlay.style.display = 'none';
+                    toggleableDiv.style.display = 'none'; // Hide the div
+                }
+            });
+        }
+    </script>
+</body>
+</html>
