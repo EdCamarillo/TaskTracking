@@ -1,18 +1,24 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render, redirect
-from django.views import View
+from django.shortcuts import redirect, render
+from .utils import userAuthenticate
 
 from .forms import loginForm
 from .forms import registrationForm
 
 # Create your views here.
-def login(request):
+def loginView(request):
     if request.method == 'POST':
         form = loginForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('')
+            username = form.cleaned_data['Username']
+            password = form.cleaned_data['Password']
+            user = userAuthenticate(username, password)
+            if user is not None:
+                request.session['username'] = username
+                return redirect('tasks')
+            else:
+                return HttpResponse('Invalid login credentials')
     else:
         form = loginForm()
 
@@ -21,7 +27,7 @@ def login(request):
                   {'form': form}
                   )
 
-def registration(request):
+def registrationView(request):
     if request.method == 'POST':
         form = registrationForm(request.POST)
         if form.is_valid():
@@ -30,9 +36,12 @@ def registration(request):
     else:
         form = registrationForm()
 
-    # return HttpResponse(template.render())
     return render(request,
                   'register.html',
                   {'form': form}
                   )
+
+def logoutView(request):
+    request.session.clear()
+    return redirect('login')
 

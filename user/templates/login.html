@@ -3,15 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Login{% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/auth.css?{% now 'U' %}">
 </head>
 <body>
     <main>
         {% block content %}
-        <form action="{% url 'login'%}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="button" type="submit">Login</button>
-        </form>
+        <div class="AuthContainer">
+            <div class="ContainerLine">
+                <h2>Login</h2>
+                <form action="{% url 'login'%}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="button" type="submit">Login</button>
+                    <a href="{% url 'register'%}">Sign up here</a>
+                </form>
+            </div>
+        </div>
         {% endblock %}
     </main>
 </body>

@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+}
+
+.AuthContainer {
+    max-width: 500px;
+    width: 400px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    background-color: #e7e7e7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-left: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.ContainerLine {
+    background-color: #eecb67;
+    width: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+h2 {
+    margin-left: 30px;
+    width: 200px;
+}
+
+form {
+    margin-left: 900%;
+}
+
+label {
+    display: block;
+    margin-bottom: 1px;
+    font-weight: bold;
+    width: 200px;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #eecb67;
+    color: #1e1e1e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #eecf89;
+}
+
+a {
+    font-weight: bold;
+    font-size: 14px;
+    position: absolute;
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    width: 200px;
+    color: #1e1e1e;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4f4f4f;
+}

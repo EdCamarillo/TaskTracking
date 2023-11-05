@@ -27,7 +27,7 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: none;
     position: relative;
-    z-index: 2;
+    z-index: 5;
 }
 
 .ContainerLine {
@@ -50,7 +50,7 @@ form {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-weight: bold;
 }
 
@@ -92,14 +92,18 @@ input[type="submit"]:hover {
 }
 
 #AddTaskButton {
-    float: right;
     background-color: #eecb67;
     color: #1e1e1e;
-    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 25px;
+    max-height: 30px;
+    max-width: 30px;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    line-height: 16px;
 }
 
 #AddTaskButton:hover {
@@ -110,7 +114,7 @@ textarea {
     resize: none;
 }
 
-.ProjectMenu {
+.LeftMenu {
     background-color: #eecb67;
     width: 300px;
     height: 100%;
@@ -125,8 +129,77 @@ textarea {
     top: 0;
     left: 0;
     width: 100%;
-
 }
+
+.ProjectMenu {
+    background-color: #eecb67;
+    width: 300px;
+    height: 100%;
+    top: 200px;
+    float: left;
+    position: absolute;
+}
+
+.projects-header-text{
+    margin-left: 20px;
+    position: absolute;
+}
+
+.MoreMenu {
+    top: 5px;
+    right: 5px;
+    width: 120px;
+    height: 150px;
+    position: absolute;
+    background-color: #f5f5f5;
+    display: none;
+    z-index: 1;
+}
+
+#more-button {
+    height: 20px;
+    width: 20px;
+    top: 15px;
+    right: 10px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#more-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#menu-list {
+    list-style-type: none;
+    left: 0;
+    top: 10px;
+    position: absolute;
+    text-align: left;
+    padding-left: 20px;
+}
+
+li {
+    margin: 7px;
+}
+
+a {
+    font-weight: bold;
+    font-size: 14px;
+    width: 200px;
+    color: #1e1e1e;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4f4f4f;
+}
+
+#logout-button {
+    text-decoration: none;
+    color: #CC3434;
+}
+
 #overlay {
     position: fixed;
     top: 0;
@@ -134,7 +207,7 @@ textarea {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Darken the background with an alpha value */
-    z-index: 1;
+    z-index: 3;
     display: none;
 }
 
@@ -189,5 +262,22 @@ select:hover {
     cursor: pointer;
     background-color: #eecf89;
 }
+
+#username {
+    font-weight: bold;
+    position: absolute;
+    top: 40px;
+}
+
+#profile-picture {
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+}
+
+
 
 

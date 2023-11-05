@@ -6,21 +6,42 @@
     <meta charset="utf-8">
     <title>{% block title %}Tasks{% endblock %}</title>
     <link rel="stylesheet" href="../static/css/tasks.css?{% now 'U' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/tasks.css' %}"> -->
 </head>
 <body>
     <main>
         {% block content %}
-        <div class="ProjectMenu">
+        <div class="LeftMenu">
             <div class="UserMenu">
+                <img id="profile-picture" src="../static/images/userdefault.png" alt="{{ request.session.username }}">
+                <span id="username">
+                    {% if request.session.username %}
+                        <span>{{ request.session.username }}</span>
+                    {% else %}
+                        <span><a href="{% url 'login'%}">Login</a></span>
+                    {% endif %}
+                </span>
+                <img id="more-button" src="../static/images/more.png" alt="More" onclick="displayMore()">
+                <div class="MoreMenu">
+                    <ul id="menu-list">
+                        <li>Profile</li>
+                        <li>Account</li>
+                        <li>Settings</li>
+                        <li><a id="logout-button" href="{% url 'logout'%}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
 
+            <div class="ProjectMenu">
+                <div class="projects-header">
+                    <h3 class="projects-header-text">My Projects</h3>
+                </div>
             </div>
         </div>
         <div class="TaskMenu">
             <h1> Project Name </h1>
             <div class="tasks-header">
                 <h3 class="tasks-header-text"> Tasks </h3>
-                <button id="AddTaskButton">Add a Task</button>
+                <button id="AddTaskButton">+</button>
             </div>
         </div>
 
@@ -43,8 +64,10 @@
         const toggleableDiv = document.querySelector('.AddTaskContainer');
         const overlay = document.getElementById('overlay');
         const closeTaskContainer = document.getElementById('CloseContainerButton');
+        const moreMenu = document.querySelector('.MoreMenu');
 
         toggleableDiv.style.display = 'none';
+        moreMenu.style.display = 'none';
 
         toggleAddTaskContainer(openTaskContainer);
         toggleAddTaskContainer(closeTaskContainer);
@@ -58,6 +81,14 @@
                     toggleableDiv.style.display = 'none'; // Hide the div
                 }
             });
+        }
+
+        function displayMore(){
+            if (moreMenu.style.display === 'none') {
+                moreMenu.style.display = 'block';
+            } else {
+                moreMenu.style.display = 'none';
+            }
         }
     </script>
 </body>
