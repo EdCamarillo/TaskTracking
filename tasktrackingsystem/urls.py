@@ -19,13 +19,18 @@ from django.urls import path
 from django.urls import include
 from django.contrib.auth import views as auth_views
 
+from user import views
 from user.views import registrationView, loginView, logoutView
 from task.views import addTask
+from project.views import createProject
+
+app_name = 'tasktracking'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register', registrationView, name='register'),
-    path('login', loginView, name='login'),
+    path('register', registrationView.as_view(), name='register'),
+    path('login', loginView.as_view(), name='login'),
+    path('projects', createProject, name='projects'),
     path('tasks', addTask, name='tasks'),
     path('logout', logoutView, name='logout')
 ]

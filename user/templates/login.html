@@ -16,6 +16,9 @@
                     {{ form.as_p }}
                     <button class="button" type="submit">Login</button>
                     <a href="{% url 'register'%}">Don't have an account?</a>
+                    {% if msg %}
+                        <h4 id="error">{{ msg }}</h4>
+                    {% endif %}
                 </form>
             </div>
         </div>

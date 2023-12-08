@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from .forms import addTaskForm
+from project.forms import projectForm
 
 # Create your views here.
 

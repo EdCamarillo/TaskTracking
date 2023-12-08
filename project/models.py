@@ -6,7 +6,7 @@ class Project(models.Model):
     ProjectName = models.CharField(max_length=255)
     StartDate = models.DateField()
     Deadline = models.DateField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.ProjectName

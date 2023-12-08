@@ -89,3 +89,10 @@ a {
 a:hover {
     color: #4f4f4f;
 }
+
+#error {
+    text-align: center;
+    color: #e86a51;
+    display: block;
+    width: 200px;
+}
