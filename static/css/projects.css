@@ -170,18 +170,23 @@ textarea {
 
 #menu-list {
     list-style-type: none;
-    left: 0;
-    top: 10px;
-    position: absolute;
+    top: 15px;
+    right: 15px;
+    position: relative;
     text-align: left;
-    padding-left: 20px;
 }
 
-li {
-    margin: 7px;
+.menu-item {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-a {
+.menu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#login-button {
     font-weight: bold;
     font-size: 14px;
     width: 200px;
@@ -189,7 +194,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+#login-button:hover {
     color: #4f4f4f;
 }
 
@@ -309,6 +314,37 @@ select:hover {
     margin-right: 20px;
     align-items: center;
 }
+
+#project-list {
+    text-decoration: none;
+    color: #333;
+}
+
+#projects {
+    list-style: none;
+}
+
+.proj {
+    padding: 8px;
+}
+
+.proj a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 0px;
+    width: 100%;
+}
+
+.proj:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.proj:active {
+    color: #fff;
+}
+
+
 
 
 

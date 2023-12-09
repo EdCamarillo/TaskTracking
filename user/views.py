@@ -26,19 +26,21 @@ class loginView(View):
             uname = request.POST['Username']
             pwd = request.POST['Password']
             cursor = connection.cursor()
-            args = [uname, pwd, None]
+
+            args = [uname, pwd]
             cursor.callproc('checkCredentials', args)
-            user_id = args[2]
             result = cursor.fetchall()
             cursor.close()
-
+            print(args)
             if result[0][0] == 0:
                 msg = 'Invalid login credentials'
                 return render(request, self.template,{'form': form, 'msg': msg})
             else:
+                user_id = result[0][1]
+                print(result)
                 request.session['username'] = uname
-                request.session['id'] = user_id
-                return redirect('tasks')
+                request.session['user_id'] = user_id
+                return redirect('projects')
 
         return render(request, self.template, {'form': form})
 

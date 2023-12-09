@@ -170,27 +170,20 @@ textarea {
 
 #menu-list {
     list-style-type: none;
-    left: 0;
-    top: 10px;
-    position: absolute;
+    top: 15px;
+    right: 15px;
+    position: relative;
     text-align: left;
-    padding-left: 20px;
 }
 
-li {
-    margin: 7px;
-}
-
-a {
-    font-weight: bold;
+.menu-item {
+    padding: 5px;
     font-size: 14px;
-    width: 200px;
-    color: #1e1e1e;
-    text-decoration: none;
+    font-weight: bold;
 }
 
-a:hover {
-    color: #4f4f4f;
+.menu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 #logout-button {
@@ -250,8 +243,6 @@ a:hover {
     background-color: #ee8767;
 }
 
-
-
 .TaskMenu {
     padding: 20px;
     margin: 20px 20px 20px 320px;
@@ -310,6 +301,35 @@ select:hover {
     margin-left: 20px;
     margin-right: 20px;
     align-items: center;
+}
+
+#project-list {
+    text-decoration: none;
+    color: #333;
+}
+
+#projects {
+    list-style: none;
+}
+
+.proj {
+    padding: 8px;
+}
+
+.proj a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 0px;
+    width: 100%;
+}
+
+.proj:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.proj:active {
+    color: #fff;
 }
 
 

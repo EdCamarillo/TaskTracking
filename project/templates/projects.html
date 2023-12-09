@@ -5,28 +5,28 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Tasks{% endblock %}</title>
-    <link rel="stylesheet" href="../static/css/projects.css?{% now 'U' %}">
+    <link rel="stylesheet" href="{% static '/css/projects.css' %}?{% now 'U' %}">
 </head>
 <body>
     <main>
         {% block content %}
         <div class="LeftMenu">
             <div class="UserMenu">
-                <img id="profile-picture" src="../static/images/userdefault.png" alt="{{ request.session.username }}">
+                <img id="profile-picture" src="{% static '/images/userdefault.png' %}" alt="{{ request.session.username }}">
                 <span id="username">
                     {% if request.session.username %}
                         <span>{{ request.session.username }}</span>
                     {% else %}
-                        <span><a href="{% url 'login'%}">Login</a></span>
+                        <span><a id="login-button" href="{% url 'login'%}">Login</a></span>
                     {% endif %}
                 </span>
-                <img id="more-button" src="../static/images/more.png" alt="More" onclick="displayMore()">
+                <img id="more-button" src="{% static '/images/more.png' %}" alt="More" onclick="displayMore()">
                 <div class="MoreMenu">
                     <ul id="menu-list">
-                        <li>Profile</li>
-                        <li>Account</li>
-                        <li>Settings</li>
-                        <li><a id="logout-button" href="{% url 'logout'%}">Logout</a></li>
+                        <li class="menu-item"><a>Profile</a></li>
+                        <li class="menu-item"><a>Account</a></li>
+                        <li class="menu-item"><a>Settings</a></li>
+                        <li class="menu-item"><a id="logout-button" href="{% url 'logout'%}">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -34,6 +34,13 @@
                 <div class="projects-header">
                     <h3 class="projects-header-text"> My Projects </h3>
                     <button class="AddButton" id="AddProjectButton">+</button>
+                </div>
+                <div id="project-list">
+                    <ul id="projects">
+                    {% for project in user_projects %}
+                        <li class="proj"><a href="{{ project.get_absolute_url }}">{{ project.ProjectName }}</a></li>
+                    {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
