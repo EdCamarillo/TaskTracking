@@ -5,7 +5,7 @@ class Task(models.Model):
     TaskId = models.AutoField(primary_key=True)
     TaskName = models.CharField(max_length=255)
     Description = models.CharField(max_length=255)
-    Status = models.BooleanField()
+    Status = models.CharField(max_length=25)
     Priority = models.CharField(max_length=255)
     DueDate = models.DateField()
     Project = models.ForeignKey(Project, on_delete=models.CASCADE)

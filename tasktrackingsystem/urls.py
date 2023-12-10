@@ -31,6 +31,6 @@ urlpatterns = [
     path('register', registrationView.as_view(), name='register'),
     path('login', loginView.as_view(), name='login'),
     path('projects', createProject, name='projects'),
-    path('projects/<int:pk>/', addTask, name='tasks'),
+    path('projects/<int:project_id>/', addTask, name='tasks'),
     path('logout', logoutView, name='logout')
 ]

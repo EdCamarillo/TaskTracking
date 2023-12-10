@@ -46,10 +46,34 @@
         </div>
 
         <div class="TaskMenu">
-            <h1> {{ project.ProjectName }} </h1>
+            <h1 class="project-name"> {{ project.ProjectName }} </h1>
             <div class="tasks-header">
                 <h3 class="tasks-header-text"> Tasks </h3>
                 <button class="AddButton" id="AddTaskButton">+</button>
+            </div>
+            <div class="task-list">
+                <ul id="tasks">
+                {% for task in tasks %}
+                    <li id="task">
+                        <div class="task-container">
+                            <div id="task-name">
+                                {{ task.TaskName }}
+                            </div>
+                            <div id="task-status">
+                                {{ task.Status }}
+                            </div>
+                            <div id="task-priority-text">Priority: </div>
+                            <div id="task-priority">
+                                {{ task.Priority }}
+                            </div>
+                            <div id="task-due-date-text">Due Date: </div>
+                            <div id="task-due-date">
+                                {{ task.DueDate }}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
             </div>
         </div>
 
@@ -57,7 +81,7 @@
             <div class="ContainerLine"></div>
             <button id="CloseTaskContainerButton">x</button>
             <h2>Add a Task</h2>
-            <form action="{% url 'tasks' project.ProjectID %}" method="post">
+            <form action="{% url 'tasks' project_id=project.ProjectID %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="button" type="submit">Add</button>

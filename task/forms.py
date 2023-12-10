@@ -3,9 +3,9 @@ from django import forms
 from .models import Task
 
 Priority_Choices = [
-    ('high', 'High'),
-    ('medium', 'Medium'),
-    ('low', 'Low'),
+    ('High', 'High'),
+    ('Medium', 'Medium'),
+    ('Low', 'Low'),
 ]
 class addTaskForm(forms.ModelForm):
     TaskName = forms.CharField(max_length=255, label_suffix="", label="Name")

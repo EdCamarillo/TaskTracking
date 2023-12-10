@@ -6,6 +6,9 @@ const closeTaskContainer = document.getElementById('CloseTaskContainerButton');
 
 const moreMenu = document.querySelector('.MoreMenu');
 
+var taskStatusElements = document.querySelectorAll('#tasks #task #task-status');
+var taskPriorityElements = document.querySelectorAll('#tasks #task #task-priority');
+
 TaskContainer.style.display = 'none';
 moreMenu.style.display = 'none';
 
@@ -34,3 +37,27 @@ function displayMore(){
         moreMenu.style.display = 'none';
     }
 }
+
+taskStatusElements.forEach(function (element) {
+    var status = element.textContent.trim().toLowerCase();
+
+    if (status === 'to do') {
+        element.style.backgroundColor = '#ebb160'; // Light red for "To Do"
+    } else if (status === 'in progress') {
+        element.style.backgroundColor = '#6092e0'; // Light orange for "In Progress"
+    } else if (status === 'done') {
+        element.style.backgroundColor = '#90ee90'; // Light green for "Done"
+    }
+});
+
+taskPriorityElements.forEach(function (element) {
+    var priority = element.textContent.trim().toLowerCase();
+
+    if (priority === 'low') {
+        element.style.backgroundColor = '#b5b5b5'; // Light blue for "Low"
+    } else if (priority === 'medium') {
+        element.style.backgroundColor = '#87ceeb'; // Sky blue for "Medium"
+    } else if (priority === 'high') {
+        element.style.backgroundColor = '#e6635a'; // Light pink for "High"
+    }
+});
