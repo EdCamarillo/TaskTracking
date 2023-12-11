@@ -5,15 +5,18 @@ const TaskOverlay = document.getElementById('task-overlay');
 const closeTaskContainer = document.getElementById('CloseTaskContainerButton');
 
 const moreMenu = document.querySelector('.MoreMenu');
+const projectMoreMenu = document.querySelector('.Project-MoreMenu');
 
 var taskStatusElements = document.querySelectorAll('#tasks #task #task-status');
 var taskPriorityElements = document.querySelectorAll('#tasks #task #task-priority');
 
 TaskContainer.style.display = 'none';
 moreMenu.style.display = 'none';
+projectMoreMenu.style.display = 'none';
 
 toggleAddTaskContainer(openTaskContainer);
 toggleAddTaskContainer(closeTaskContainer);
+
 function toggleAddTaskContainer(Button){
     Button.addEventListener('click', () => {
         if (TaskContainer.style.display === 'none') {
@@ -30,11 +33,23 @@ document.getElementById("AddProjectButton").addEventListener("click", function()
     window.location.href = "/projects";
 });
 
+document.getElementById("CloseEditTaskContainerButton").addEventListener("click", function() {
+    window.history.back();
+});
+
 function displayMore(){
     if (moreMenu.style.display === 'none') {
         moreMenu.style.display = 'block';
     } else {
         moreMenu.style.display = 'none';
+    }
+}
+
+function displayProjectMore(){
+    if (projectMoreMenu.style.display === 'none') {
+        projectMoreMenu.style.display = 'block';
+    } else {
+        projectMoreMenu.style.display = 'none';
     }
 }
 
@@ -61,3 +76,16 @@ taskPriorityElements.forEach(function (element) {
         element.style.backgroundColor = '#e6635a'; // Light pink for "High"
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+        var taskDetailPattern = /^\/projects\/\d+\/\d+\/$/;
+        if (taskDetailPattern.test(window.location.pathname)) {
+            document.getElementById('EditTaskContainer').style.display = 'block';
+            document.getElementById('edit-task-overlay').style.display = 'block';
+
+            var taskForm = document.getElementById('editTaskForm');
+            var projectID = taskForm.getAttribute('data-project-id');
+            var taskID = taskForm.getAttribute('data-task-id');
+            taskForm.action = `/projects/${projectID}/${taskID}/`;
+        }
+    });

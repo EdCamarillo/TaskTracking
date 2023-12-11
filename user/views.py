@@ -6,7 +6,7 @@ from .utils import userAuthenticate
 
 from django.shortcuts import render
 from django.views import View
-from django.db import  connection
+from django.db import connection
 from django.http import HttpResponseRedirect
 
 from .forms import loginForm
