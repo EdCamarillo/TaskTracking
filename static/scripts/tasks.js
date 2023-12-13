@@ -6,6 +6,7 @@ const closeTaskContainer = document.getElementById('CloseTaskContainerButton');
 
 const moreMenu = document.querySelector('.MoreMenu');
 const projectMoreMenu = document.querySelector('.Project-MoreMenu');
+const taskMoreMenu = document.querySelector('.Task-MoreMenu');
 
 var taskStatusElements = document.querySelectorAll('#tasks #task #task-status');
 var taskPriorityElements = document.querySelectorAll('#tasks #task #task-priority');
@@ -13,6 +14,7 @@ var taskPriorityElements = document.querySelectorAll('#tasks #task #task-priorit
 TaskContainer.style.display = 'none';
 moreMenu.style.display = 'none';
 projectMoreMenu.style.display = 'none';
+taskMoreMenu.style.display = 'none';
 
 toggleAddTaskContainer(openTaskContainer);
 toggleAddTaskContainer(closeTaskContainer);
@@ -50,6 +52,14 @@ function displayProjectMore(){
         projectMoreMenu.style.display = 'block';
     } else {
         projectMoreMenu.style.display = 'none';
+    }
+}
+
+function displayTaskMore(){
+    if (taskMoreMenu.style.display === 'none') {
+        taskMoreMenu.style.display = 'block';
+    } else {
+        taskMoreMenu.style.display = 'none';
     }
 }
 

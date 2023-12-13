@@ -16,21 +16,69 @@ header {
     text-align: center;
 }
 
+textarea, input, select {
+    font-family: Arial, sans-serif;
+    border: none;
+}
+
+textarea, input, select:focus {
+    outline: none;
+}
+
 #AddTaskContainer {
     max-width: 500px;
     width: 500px;
     margin-left: 30%;
     margin-top: 20px;
     float: right;
-    background-color: #e7e7e7;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    background-color: #fafafa;
     border-left: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: none;
     position: absolute;
     z-index: 6;
+}
+
+.AddTaskHeader {
+    height: 50px;
+    width: 100%;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b8b8b8;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+#AddTaskHeaderText {
+    margin-left: 20px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#CloseTaskContainerButton {
+    background-color: #ee7b67;
+    color: #1e1e1e;
+    cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+#CloseTaskContainerButton:hover {
+    background-color: #ee8767;
+}
+
+.AddTaskBody {
+    position: relative;
+    height: 420px;
+}
+
+#AddTaskForm {
+    margin-left: 20px;
+    width: 800px;
 }
 
 .ContainerLine {
@@ -39,16 +87,7 @@ header {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
-}
-
-h2 {
-    margin: 30px;
-}
-
-form {
-    margin: 30px 0;
-    margin-left: 50px;
+    left: -15px;
 }
 
 label {
@@ -58,13 +97,16 @@ label {
 }
 
 input[type="text"],
-input[type="date"],
 textarea {
     width: 50%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+input[type="date"] {
+    padding: 10px;
 }
 
 input[type="submit"] {
@@ -76,8 +118,8 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-button {
-    background-color: #eecb67;
+.form-button {
+    background-color: #fec051;
     color: #1e1e1e;
     padding: 10px 20px;
     border: none;
@@ -86,8 +128,8 @@ button {
     font-weight: bold;
 }
 
-button:hover {
-    background-color: #eecf89;
+.form-button:hover {
+    background-color: #fda84b;
 }
 
 input[type="submit"]:hover {
@@ -95,7 +137,7 @@ input[type="submit"]:hover {
 }
 
 .AddButton {
-    background-color: #eecb67;
+    background-color: #fec051;
     color: #2e2e2e;
     border: none;
     cursor: pointer;
@@ -110,7 +152,7 @@ input[type="submit"]:hover {
 }
 
 .AddButton:hover {
-    background-color: #eecf89;
+    background-color: #fda84b;
 }
 
 textarea {
@@ -129,7 +171,7 @@ textarea {
 }
 
 .UserMenu {
-    background: linear-gradient(to bottom, #e8d8b7, #ffbd59);
+    background: linear-gradient(to top right, #fe9043, #fec051);
     height: 130px;
     position: sticky;
     top: 0;
@@ -220,19 +262,6 @@ textarea {
     display: none;
 }
 
-#CloseTaskContainerButton {
-    background-color: #ee7b67;
-    color: #1e1e1e;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-#CloseTaskContainerButton:hover {
-    background-color: #ee8767;
-}
-
 .TaskMenu {
     position: relative;
     margin-left: 300px;
@@ -254,6 +283,21 @@ textarea {
     position: relative;
     display: flex;
     font-size: 24px;
+}
+
+.project-deadline-text {
+    margin-left: 50px;
+    position: relative;
+    display: flex;
+    font-size: 12px;
+}
+
+.project-deadline {
+    font-weight: bold;
+    margin-left: 10px;
+    position: relative;
+    display: flex;
+    font-size: 12px;
 }
 
 #project-more-button {
@@ -295,7 +339,7 @@ textarea {
     margin: 10px;
 }
 
-.delete {
+#delete-project {
     text-decoration: none;
     color: #CC3434;
 }
@@ -414,7 +458,7 @@ select {
 
 select:hover {
     cursor: pointer;
-    background-color: #eecf89;
+    background-color: #fda84b;
 }
 
 #username {
@@ -467,10 +511,7 @@ select:hover {
     margin-left: 30%;
     margin-top: 20px;
     float: right;
-    background-color: #e7e7e7;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    background-color: #fafafa;
     border-left: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: none;
@@ -478,13 +519,69 @@ select:hover {
     z-index: 6;
 }
 
+.EditTaskHeader {
+    height: 50px;
+    width: 100%;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b8b8b8;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+#EditTaskHeaderText {
+    margin-left: 20px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#editTask-more-button {
+    margin-right: 20px;
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#editTask-more-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
 #CloseEditTaskContainerButton {
     background-color: #ee7b67;
     color: #1e1e1e;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+#CloseEditTaskContainerButton: hover {
+    background-color: #ee8767;
+}
+
+.EditTaskBody {
+    position: relative;
+    height: 750px;
+}
+
+.right-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.EditTaskBody {
+    position: relative;
+    height: 500px;
+}
+
+#editTaskForm {
+    margin-left: 20px;
+    width: 800px;
 }
 
 #edit-task-overlay {
@@ -493,9 +590,49 @@ select:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Darken the background with an alpha value */
+    background: rgba(0, 0, 0, 0.3);
     z-index: 5;
     display: none;
+}
+
+.Task-MoreMenu {
+    top: 46px;
+    right: 5px;
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    background-color: #f5f5f5;
+    display: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+#task-menu-list {
+    list-style-type: none;
+    position: relative;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin: 10px;
+}
+
+#delete-task {
+    text-decoration: none;
+    color: #CC3434;
+}
+
+#login-button {
+    font-weight: bold;
+    font-size: 14px;
+    width: 200px;
+    color: #1e1e1e;
+    text-decoration: none;
+}
+
+#login-button:hover {
+    color: #4f4f4f;
 }
 
 

@@ -8,18 +8,21 @@
 <body>
     <main>
         {% block content %}
-        <div class="AuthContainer">
-            <div class="ContainerLine">
+        <div class="background"></div>
+        <div class="overlay">
+            <div class="auth-container">
                 <h2>Login</h2>
-                <form action="{% url 'login'%}" method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="button" type="submit">Login</button>
-                    <a href="{% url 'register'%}">Don't have an account?</a>
-                    {% if msg %}
-                        <h4 id="error">{{ msg }}</h4>
-                    {% endif %}
-                </form>
+                <div class="auth-form">
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="button" type="submit">Login</button>
+                        <a href="{% url 'register' %}">Don't have an account?</a>
+                        {% if msg %}
+                            <h4 id="error">{{ msg }}</h4>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
         </div>
         {% endblock %}

@@ -75,3 +75,10 @@ def editTask(request, project_id, task_id):
     return render(request,
                   'tasks.html',
                   context)
+
+def deleteTask(request, project_id, task_id):
+    cursor = connection.cursor()
+    cursor.callproc('deleteTask', [task_id])
+    cursor.close()
+
+    return redirect('tasks', project_id=project_id)

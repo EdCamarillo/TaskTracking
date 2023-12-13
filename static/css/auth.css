@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     margin: 0;
+    overflow: hidden;
 }
 
 header {
@@ -9,39 +10,48 @@ header {
     color: #fff;
 }
 
-.AuthContainer {
-    max-width: 500px;
-    width: 400px;
-    height: 500px;
-    top: 50%;
-    left: 50%;
-    background-color: #e7e7e7;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    border-left: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+input {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
 }
 
-.ContainerLine {
-    background-color: #eecb67;
-    width: 15px;
+input:focus {
+    outline: none;
+}
+
+input:hover {
+    background-color: #f2f2f2;
+}
+
+.background {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to top right, #fd4a31, #fec051);
+    font-family: Arial, sans-serif;
+    display: flex;
+    color: #333;
+    position: relative;
+}
+
+.overlay {
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0;
+    right: 0;
+    height: 100%;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 1;
 }
 
-h2 {
-    margin-left: 30px;
-    width: 200px;
+.auth-container {
+    margin: 10%;
 }
 
-form {
-    margin-left: 900%;
+.auth-form {
+    margin: 5%;
 }
 
 label {
@@ -51,17 +61,8 @@ label {
     width: 200px;
 }
 
-input[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
 button {
-    background-color: #eecb67;
+    background-color: #fec051;
     color: #1e1e1e;
     padding: 10px 20px;
     border: none;
@@ -71,7 +72,7 @@ button {
 }
 
 button:hover {
-    background-color: #eecf89;
+    background-color: #fda84b;
 }
 
 a {

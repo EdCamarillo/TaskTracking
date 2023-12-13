@@ -12,7 +12,7 @@
         {% block content %}
         <div class="LeftMenu">
             <div class="UserMenu">
-                <img id="profile-picture" src="{% static '/images/userdefault.png' %}" alt="{{ request.session.username }}">
+                <img id="profile-picture" src="{% static '/images/userdefault.png' %}?{% now 'U' %}" alt="{{ request.session.username }}">
                 <span id="username">
                     {% if request.session.username %}
                         <span>{{ request.session.username }}</span>
@@ -46,8 +46,8 @@
         </div>
 
         <div class="TaskMenu">
-            <h1> Create a New Project </h1>
-            <div class="tasks-header">
+            <h1 class="create-header"> Create a New Project </h1>
+            <div class="project-body">
                 <form action="{% url 'projects'%}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}

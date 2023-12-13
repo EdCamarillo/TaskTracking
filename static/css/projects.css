@@ -15,6 +15,15 @@ h1 {
     margin: 0;
 }
 
+textarea, input, select {
+    font-family: Arial, sans-serif;
+    border: none;
+}
+
+textarea, input, select:focus {
+    outline: none;
+}
+
 #AddTaskContainer {
     max-width: 500px;
     width: 500px;
@@ -76,7 +85,7 @@ input[type="submit"] {
 }
 
 button {
-    background-color: #eecb67;
+    background-color: #fec051;
     color: #1e1e1e;
     padding: 10px 20px;
     border: none;
@@ -86,7 +95,7 @@ button {
 }
 
 button:hover {
-    background-color: #eecf89;
+    background-color: #fda84b;
 }
 
 input[type="submit"]:hover {
@@ -94,7 +103,7 @@ input[type="submit"]:hover {
 }
 
 .AddButton {
-    background-color: #eecb67;
+    background-color: fec051;
     color: #2e2e2e;
     border: none;
     cursor: pointer;
@@ -109,7 +118,7 @@ input[type="submit"]:hover {
 }
 
 .AddButton:hover {
-    background-color: #eecf89;
+    background-color: #fda84b;
 }
 
 textarea {
@@ -128,7 +137,7 @@ textarea {
 }
 
 .UserMenu {
-    background: linear-gradient(to bottom, #e8d8b7, #ffbd59);
+    background: linear-gradient(to top right, #fe9043, #fec051);
     height: 130px;
     position: sticky;
     top: 0;
@@ -150,24 +159,29 @@ textarea {
 }
 
 .MoreMenu {
-    top: 5px;
+    top: 46px;
     right: 5px;
-    width: 120px;
-    height: 150px;
+    width: 100px;
+    height: 120px;
     position: absolute;
     background-color: #f5f5f5;
     display: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
     z-index: 1;
+    border-radius: 5px;
 }
 
 #more-button {
+    padding: 5px;
     height: 20px;
     width: 20px;
-    top: 15px;
-    right: 10px;
+    top: 10px;
+    right: 5px;
     position: absolute;
     cursor: pointer;
+    border-radius: 8px;
     z-index: 2;
 }
 
@@ -177,10 +191,10 @@ textarea {
 
 #menu-list {
     list-style-type: none;
-    top: 15px;
-    right: 15px;
     position: relative;
-    text-align: left;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin: 10px;
 }
 
 .menu-item {
@@ -190,19 +204,8 @@ textarea {
 }
 
 .menu-item:hover {
+    cursor: pointer;
     background: rgba(0, 0, 0, 0.1);
-}
-
-#login-button {
-    font-weight: bold;
-    font-size: 14px;
-    width: 200px;
-    color: #1e1e1e;
-    text-decoration: none;
-}
-
-#login-button:hover {
-    color: #4f4f4f;
 }
 
 #logout-button {
@@ -268,12 +271,14 @@ textarea {
     position: fixed;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.tasks-header {
-    display: flex;
-    align-items: center;
+.project-body {
+    width: 600px;
+}
+
+.create-header {
+    text-align: left;
 }
 
 .tasks-header-text {
@@ -351,7 +356,17 @@ select:hover {
     color: #fff;
 }
 
+#login-button {
+    font-weight: bold;
+    font-size: 14px;
+    width: 200px;
+    color: #1e1e1e;
+    text-decoration: none;
+}
 
+#login-button:hover {
+    color: #4f4f4f;
+}
 
 
 

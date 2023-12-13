@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.db import connection
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.views import View
 
@@ -19,10 +19,13 @@ def createProject(request):
             deadline = form.cleaned_data['Deadline']
             user_id = request.session.get('user_id')
 
-            with connection.cursor() as cursor:
-                cursor.callproc('addProject', [project_name, start_date, deadline, user_id])
+            cursor = connection.cursor()
+            cursor.callproc('addProject', [project_name, start_date, deadline, user_id])
+            cursor.close()
 
-            return redirect('projects')  # Redirect to project list page after successful submission
+            new_project = Project.objects.filter(ProjectName=project_name, user=user_id).last()
+            if new_project:
+                return redirect('tasks', project_id=new_project.ProjectID)
     else:
         form = projectForm()
 
@@ -38,6 +41,9 @@ def createProject(request):
                   context
                   )
 
-# def project_list(request):
-#     user_projects = Project.objects.filter(user_id=request.session.get('user_id'))
-#     return render(request, 'projects.html', {'user_projects': user_projects})
+def deleteProject(request, project_id):
+    cursor = connection.cursor()
+    cursor.callproc('deleteProject', [project_id])
+    cursor.close()
+
+    return redirect('projects')

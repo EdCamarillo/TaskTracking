@@ -21,9 +21,8 @@ from django.contrib.auth import views as auth_views
 
 from user import views
 from user.views import registrationView, loginView, logoutView
-from task.views import addTask
-from task.views import editTask
-from project.views import createProject
+from task.views import addTask, editTask, deleteTask
+from project.views import createProject, deleteProject
 
 app_name = 'tasktracking'
 
@@ -34,5 +33,7 @@ urlpatterns = [
     path('projects', createProject, name='projects'),
     path('projects/<int:project_id>/', addTask, name='tasks'),
     path('projects/<int:project_id>/<int:task_id>/', editTask, name='edit_task'),
+    path('projects/<int:project_id>/delete/', deleteProject, name='delete_project'),
+    path('projects/<int:project_id>/<int:task_id>/delete/', deleteTask, name='delete_task'),
     path('logout', logoutView, name='logout')
 ]
