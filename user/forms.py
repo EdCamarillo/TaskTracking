@@ -29,7 +29,7 @@ class loginForm(forms.ModelForm):
     Username = forms.CharField(max_length=255, label_suffix="", label=False,
                                widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     Password = forms.CharField(max_length=255, label_suffix="", label=False,
-                               widget=forms.TextInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
     class Meta:
         model = User
         fields = [

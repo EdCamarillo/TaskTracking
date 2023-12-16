@@ -3,6 +3,10 @@ const openTaskContainer = document.getElementById('AddTaskButton');
 const TaskContainer = document.getElementById('AddTaskContainer');
 const TaskOverlay = document.getElementById('task-overlay');
 const closeTaskContainer = document.getElementById('CloseTaskContainerButton');
+const openProjectSettings = document.getElementById('project-settings');
+const projectSettingsContainer = document.getElementById('EditProjectContainer');
+const projectSettingsOverlay = document.getElementById('edit-project-overlay');
+const closeProjectSettingsContainer = document.getElementById('CloseEditProjectContainerButton');
 
 const moreMenu = document.querySelector('.MoreMenu');
 const projectMoreMenu = document.querySelector('.Project-MoreMenu');
@@ -15,6 +19,7 @@ TaskContainer.style.display = 'none';
 moreMenu.style.display = 'none';
 projectMoreMenu.style.display = 'none';
 taskMoreMenu.style.display = 'none';
+EditProjectContainer.style.display = 'none';
 
 toggleAddTaskContainer(openTaskContainer);
 toggleAddTaskContainer(closeTaskContainer);
@@ -36,6 +41,10 @@ document.getElementById("AddProjectButton").addEventListener("click", function()
 });
 
 document.getElementById("CloseEditTaskContainerButton").addEventListener("click", function() {
+    window.history.back();
+});
+
+document.getElementById("CloseEditProjectContainerButton").addEventListener("click", function() {
     window.history.back();
 });
 
@@ -81,7 +90,7 @@ taskPriorityElements.forEach(function (element) {
     if (priority === 'low') {
         element.style.backgroundColor = '#b5b5b5'; // Light blue for "Low"
     } else if (priority === 'medium') {
-        element.style.backgroundColor = '#87ceeb'; // Sky blue for "Medium"
+        element.style.backgroundColor = '#f7ca60'; // Sky blue for "Medium"
     } else if (priority === 'high') {
         element.style.backgroundColor = '#e6635a'; // Light pink for "High"
     }
@@ -98,4 +107,13 @@ document.addEventListener('DOMContentLoaded', function () {
             var taskID = taskForm.getAttribute('data-task-id');
             taskForm.action = `/projects/${projectID}/${taskID}/`;
         }
-    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+        var currentUrl = window.location.href;
+        if (currentUrl.includes('/settings/')) {
+            projectSettingsContainer.style.display = 'block';
+            projectSettingsOverlay.style.display = 'block';
+            projectMoreMenu.style.display = 'block';
+        }
+});

@@ -7,6 +7,7 @@ from django.views import View
 
 from .forms import projectForm
 from .models import Project
+from task.models import Task
 
 # Create your views here.
 
@@ -30,7 +31,6 @@ def createProject(request):
         form = projectForm()
 
     user_projects = Project.objects.filter(user=request.session.get('user_id'))
-    print(user_projects)
     context = {
         'user_projects': user_projects,
         'form': form,
@@ -47,3 +47,36 @@ def deleteProject(request, project_id):
     cursor.close()
 
     return redirect('projects')
+
+def editProject(request, project_id):
+    project = get_object_or_404(Project, ProjectID=project_id)
+    tasks = Task.objects.filter(Project=project_id)
+
+    if request.method == 'POST':
+        form = projectForm(request.POST, instance=project)
+        if form.is_valid():
+            project_name = form.cleaned_data['ProjectName']
+            start_date = form.cleaned_data['StartDate']
+            deadline = form.cleaned_data['Deadline']
+            project_id = project_id
+
+            cursor = connection.cursor()
+            args = [project_name, start_date, deadline, project_id]
+            cursor.callproc('editProject', args)
+            cursor.close()
+            return redirect('tasks', project_id=project_id)
+    else:
+        form = projectForm(instance=project)
+
+    user_projects = Project.objects.filter(user=request.session.get('user_id'))
+
+    context = {
+        'user_projects': user_projects,
+        'project': project,
+        'tasks': tasks,
+        'form': form,
+    }
+
+    return render(request,
+                  'tasks.html',
+                  context)

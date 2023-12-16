@@ -53,7 +53,8 @@
                 <img id="project-more-button" src="{% static '/images/more-flat.png' %}" alt="More" onclick="displayProjectMore()">
                 <div class="Project-MoreMenu">
                     <ul id="project-menu-list">
-                        <li class="menu-item"><a>Settings</a></li>
+                        <li class="menu-item">
+                            <a id="project-settings" href="{% url 'edit_project' project_id=project.ProjectID %}">Settings</a></li>
                         <li class="menu-item">
                             <a id="delete-project" href="{% url 'delete_project' project_id=project.ProjectID %}" onclick="return confirm('Are you sure you want to delete this project?')">Delete</a>
                         </li>
@@ -109,7 +110,6 @@
                 </form>
             </div>
         </div>
-
         <div id="task-overlay" class="hidden"></div>
 
         <div id="EditTaskContainer">
@@ -140,6 +140,26 @@
             </div>
         </div>
         <div id="edit-task-overlay" class="hidden"></div>
+
+        <div id="EditProjectContainer">
+            <div class="ContainerLine"></div>
+            <div class="EditProjectHeader">
+                <h2 id="EditProjectHeaderText">Project Settings</h2>
+                <div class="right-buttons">
+                    <button id="CloseEditProjectContainerButton">x</button>
+                </div>
+            </div>
+            <div class="EditProjectBody">
+                <form id="editProjectForm" action="{% url 'edit_project' project_id=project.ProjectID %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="form-button" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+        <div id="edit-project-overlay" class="hidden"></div>
+
+
 
         {% endblock %}
     </main>
